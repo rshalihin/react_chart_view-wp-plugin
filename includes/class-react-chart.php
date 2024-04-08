@@ -38,6 +38,7 @@ class React_Chart {
 	 */
 	public function react_chart_view_init() {
 		add_action( 'wp_dashboard_setup', array( $this, 'react_chart_view_dashboard_setup' ) );
+		require_once VCWR_PATH . 'includes/class-react-chart-rest-api.php';
 	}
 
 	/**

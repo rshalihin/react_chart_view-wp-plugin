@@ -54,19 +54,19 @@ function activate_react_chart_view() {
 	$prefix           = $wpdb->prefix;
 	$table_name       = $prefix . 'mrs_chart_table';
 	$charset_collate  = $wpdb->get_charset_collate();
-	$create_table_sql = "CREATE TABLE IF NOT EXISTS {$table_name} ( `id` INT(11) NOT NULL AUTO_INCREMENT , `uv` INT(11) NOT NULL , `pv` INT(11) NOT NULL , `amt` INT(11) NOT NULL , `dateT` DATE NOT NULL , PRIMARY KEY (`id`)) $charset_collate;";
+	$create_table_sql = "CREATE TABLE IF NOT EXISTS {$table_name} ( `id` INT(11) NOT NULL AUTO_INCREMENT , `name` VARCHAR(100) , `uv` INT(11) NOT NULL , `pv` INT(11) NOT NULL , `amt` INT(11) NOT NULL , `dateT` DATE NOT NULL , PRIMARY KEY (`id`)) $charset_collate;";
 
 	if ( ! function_exists( 'dbDelta' ) ) {
 		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 	}
 	dbDelta( $create_table_sql );
 
-	$insert_query = 'INSERT into ' . $table_name . " (name,uv,pv,amt,dateT) VALUES 
-    ('Page A',4000,2000,2400,'2023-03-01'),
-    ('Page B',2000,4000,3000,'2023-03-13'),
-    ('Page C',6000,3000,2000,'2023-02-6'),
-    ('Page D',1000,2000,5000,'2023-03-1'),
-    ('Page E',6000,1000,4000,'2023-02-16')
+	$insert_query = "INSERT INTO ${table_name} (name,uv,pv,amt,dateT) VALUES 
+    ('Page A',4000,2000,2400,'2024-03-21'),
+    ('Page B',2000,4000,3000,'2024-03-13'),
+    ('Page C',6000,3000,2000,'2024-04-6'),
+    ('Page D',1000,2000,5000,'2024-04-1'),
+    ('Page E',6000,1000,4000,'2024-03-16');
     ";
 
 	$wpdb->query( $insert_query );
